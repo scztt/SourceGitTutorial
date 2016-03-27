@@ -1,6 +1,11 @@
 (
 {
-	var sig;
-	sig = SinOsc.ar([100, 200, 300]).postln;
-	sig = Mix(sig * 0.1).postln;  // Multiple by 0.1 because it's 3 signals, so it's louder now
-}.play;)
+	var sig, freq = 80;
+
+	freq = freq + [0, 0.3, 0.65]; // 3 slightly different freqs
+
+	sig = LFPulse.ar(freq, 0, 0.3);
+	sig = Mix(sig);
+	sig = sig * 0.1;
+}.play
+)
