@@ -1,11 +1,11 @@
 (
 {
-	var sig, freq = 80;
+	var sig, width, freq = 80;
 
-	freq = freq + [0, 0.3, 0.65]; // 3 slightly different freqs
+	width = LFNoise2.kr(2, 0.2, 0.5);    // args are (freq, mul, add), so this is slow, and range is 0.5±0.2
 
-	sig = LFPulse.ar(freq, 0, 0.3);
+	sig = LFPulse.ar(freq, 0, width);
 	sig = Mix(sig);
 	sig = sig * 0.1;
-}.play
+}.play;
 )
