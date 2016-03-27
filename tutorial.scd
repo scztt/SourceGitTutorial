@@ -10,7 +10,7 @@
 	sig = Mix(sig);
 
 	// some space
-	sig = FreeVerb.ar(sig, 0.5, 0.8);
+	sig = CombC.ar(sig, 0.5, 0.5, 3);
 
 	sig = sig * 0.1;
 }.play;
