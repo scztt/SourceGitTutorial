@@ -12,16 +12,14 @@
 	sig = Mix(sig);
 
 	// filters
-	filterFreq = LFNoise2.kr(0.3, 900, 1000); // 1000 ± 900hz is our frequency for the BPF - 0.3 has it moving fairly slowly
-	sig = BPF.ar(sig, filterFreq, 10 / filterFreq); // arg3 is rq, which is generally (bandwidth / freq), so this is a bandwidth of 10
-	// that means: if filterFreq == 400, this will only let sounds through between 390 and 410, roughly
-
-	sig = LPF.ar(sig, 1500); // a simple LPF - everything above 1500hz is filtered
+	filterFreq = LFNoise2.kr(0.3, 900, 1000);
+	sig = sig * BPF.ar(sig, filterFreq, 10 / filterFreq);
+	sig = LPF.ar(sig, 1500);
 
 
 	// space
 	sig = CombC.ar(sig, 1, 1, -12);
 
-	sig = sig; // it's quiet now, so actually I want it louder
+	sig = sig;
 }.play;
 )
