@@ -6,7 +6,7 @@
 	width = LFNoise2.kr([1.3, 1.4, 2.5], 0.5, 0.5);
 
 	// source
-	sig = LFPulse.ar(freq, 0, width);
+	sig = Saw.ar(freq, width);   // We'll just use our width as the phase argument for now, to get some variation
 	noise = sig * WhiteNoise.ar(0.1);
 	sig = sig + noise;
 	sig = Mix(sig);
@@ -16,10 +16,9 @@
 	sig = sig * BPF.ar(sig, filterFreq, 10 / filterFreq);
 	sig = LPF.ar(sig, 1500);
 
-
 	// space
 	sig = CombC.ar(sig, 1, 1, -12);
 
-	sig = sig;
+	sig = sig * 10; // louder still
 }.play;
 )
