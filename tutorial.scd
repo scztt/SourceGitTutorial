@@ -10,7 +10,7 @@
 	sig = Mix(sig);
 
 	// some space
-	sig = CombC.ar(sig, 0.5, 0.5, 3);
+	sig = CombC.ar(sig, 1, 1, -12);
 
 	sig = sig * 0.1;
 }.play;
